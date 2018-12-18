@@ -47,7 +47,7 @@ export default new Vuex.Store({
         //斜め
         if(state.board.cells[0][0].state == state.board.cells[1][1].state
           && state.board.cells[1][1].state == state.board.cells[2][2].state
-          && state.board.cells[0][i].state != Cell.CELL_ENUM.NONE){
+          && state.board.cells[1][1].state != Cell.CELL_ENUM.NONE){
           winner = state.board.cells[1][1].state
           alert("Player" + winner + "の勝ち")
         }
