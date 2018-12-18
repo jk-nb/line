@@ -52,6 +52,13 @@ export default new Vuex.Store({
           alert("Player" + winner + "の勝ち")
         }
 
+        if(state.board.cells[0][2].state == state.board.cells[1][1].state
+          && state.board.cells[1][1].state == state.board.cells[2][0].state
+          && state.board.cells[1][1].state != Cell.CELL_ENUM.NONE){
+          winner = state.board.cells[1][1].state
+          alert("Player" + winner + "の勝ち")
+        }
+
         if(winner==null){
           state.board.turn++
         }
