@@ -1,24 +1,38 @@
-import { Cell } from './cell'
+import Cell from "./cell"
+import CELL_ENUM from "./cell"
+export default class Board{
+    public lineNum: number
+    public cells: Cell[][]
 
-export module Board {
-    var lineNum = 3
-    
-    export declare type T = {
-        lineNum:    number,
-        cells:      Cell.T[][]
+    constructor(lineNum: number = 3) {
+        this.lineNum = lineNum
+        this.cells = this.init()
     }
 
-    export var init = (): T => {
-        var cells: Cell.T[][] = new Array()
-        for ( var i = 0; i < lineNum; i++ ) {
+    public getLineNum(): number {
+        return this.lineNum
+    }
+
+    public getCells(): Cell[][] {
+        return this.cells
+    }
+
+    public setLineNum(lineNum: number){
+        this.lineNum = lineNum
+    }
+
+    public setCells(row:number, col:number, state:CELL_ENUM){
+        this.cells[row][col] = new Cell()
+    }
+
+    public init() : Cell[][]{
+        var cells: Cell[][] = new Array()
+        for ( var i = 0; i < this.lineNum; i++ ) {
             cells[i] = new Array()
-            for ( var j = 0; j < lineNum; j++ ) {
-                cells[i][j] = Cell.empty(i,j)
+            for ( var j = 0; j < this.lineNum; j++ ) {
+                cells[i][j] = new Cell()
             }
         }
-        return {
-            lineNum: lineNum,
-            cells: cells
-        }
+        return cells
     }
 }

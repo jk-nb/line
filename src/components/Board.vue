@@ -24,19 +24,18 @@ import store from './../store'
 import Cell from './Cell.vue';
 
 @Component({
-  computed:{
-    lineNum: function () {
-      return store.state.board.lineNum
-    },
-    turn(): Number{
-      return store.state.game.turn
-    }
-  },
   components: {
     Cell,
   }
 })
-export default class Board extends Vue {}
+export default class Board extends Vue {
+  get lineNum(): number {
+    return store.state.board.lineNum
+  }
+  get turn(): number {
+    return store.state.game.turn
+  }
+}
 </script>
 
 <style scoped>

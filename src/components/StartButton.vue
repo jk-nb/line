@@ -7,20 +7,19 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import store from './../store'
-import { Game } from '@/models';
 
-export default {
-  computed:{
-    msg(): string{
-      return Game.buttonMsg[store.state.game.state]
-    }
-  },
-  props: {
+@Component({
 
-  },
-  methods:{
-    click(){store.commit('changeGameState',{})}
+})
+export default class StartButton extends Vue {
+  public click(){
+    store.commit('changeGameState',{})
   }
+
+  get msg(): string {
+    return store.state.game.buttonMsg[store.state.game.state]
+  }
+
 }
 </script>
 
