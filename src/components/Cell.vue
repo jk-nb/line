@@ -29,8 +29,8 @@ export default {
           break
         case Game.GAME_STATE_ENUM.PLAY:
           store.commit('changeCellStatus',{
-            col: (this as any).col as number,
-            row: (this as any).row as number
+            col: (this as any).col,
+            row: (this as any).row
           })
           break
         case Game.GAME_STATE_ENUM.FINISH:
