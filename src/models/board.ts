@@ -4,7 +4,6 @@ export module Board {
     var lineNum = 3
     
     export declare type T = {
-        turn:       number,
         lineNum:    number,
         cells:      Cell.T[][]
     }
@@ -18,7 +17,6 @@ export module Board {
             }
         }
         return {
-            turn: 1,
             lineNum: lineNum,
             cells: cells
         }

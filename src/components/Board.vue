@@ -29,7 +29,7 @@ import Cell from './Cell.vue';
       return store.state.board.lineNum
     },
     turn(): Number{
-      return store.state.board.turn
+      return store.state.game.turn
     }
   },
   components: {

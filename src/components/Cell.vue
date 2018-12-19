@@ -9,6 +9,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import Cell  from './../model/cell.vue'
 import board from './Board.vue'
 import store from './../store'
+import { Game } from '@/models';
 
 export default {
   computed:{
@@ -22,10 +23,20 @@ export default {
   },
   methods:{
     putStone(i: number, j: number){
-      store.commit('changeCellStatus',{
-        col: (this as any).col as number,
-        row: (this as any).row as number
-      })
+      switch(store.state.game.state){
+        case Game.GAME_STATE_ENUM.INIT:
+            alert("ゲームが始まっていません")
+          break
+        case Game.GAME_STATE_ENUM.PLAY:
+          store.commit('changeCellStatus',{
+            col: (this as any).col as number,
+            row: (this as any).row as number
+          })
+          break
+        case Game.GAME_STATE_ENUM.FINISH:
+            alert("ゲームが終了しています")
+          break
+      }
     }
   }
 }
