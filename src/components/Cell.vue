@@ -15,7 +15,7 @@ export default class Cell extends Vue {
   @Prop() row!: number
 
   get state(): number {
-    return store.state.board.cells[this.col-1][this.row-1].state
+    return store.state.game.board.cells[this.col-1][this.row-1].state
   } 
 
   public putStone(i: number, j: number){

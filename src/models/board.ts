@@ -1,37 +1,28 @@
 import Cell from "./cell"
 export default class Board{
-    private _lineNum: number
-    private _cells: Cell[][]
+    lineNum: number
+    cells!: Cell[][]
 
     constructor(lineNum: number = 3) {
-        this._lineNum = lineNum
-        this._cells = this.init()
+        this.lineNum = lineNum
+        this.createCells()
     }
 
-    get lineNum(): number {
-        return this._lineNum
-    }
-
-    get cells(): Cell[][] {
-        return this._cells
-    }
-
-    set lineNum(lineNum: number){
-        this._lineNum = lineNum
-    }
-
-    public init() : Cell[][]{
+    createCells() : void {
         var cells: Cell[][] = new Array()
-        for ( var i = 0; i < this._lineNum; i++ ) {
+        for ( var i = 0; i < this.lineNum; i++ ) {
             cells[i] = new Array()
-            for ( var j = 0; j < this._lineNum; j++ ) {
+            for ( var j = 0; j < this.lineNum; j++ ) {
                 cells[i][j] = new Cell()
             }
         }
-        return cells
+        this.cells = cells
     }
 
-    public getCell(row:number, col:number){
-        return this._cells[row][col]
-    }
+    init(): void {
+        this.cells.forEach(cells => 
+          cells.forEach(v => v.init())
+        )
+      }
+
 }

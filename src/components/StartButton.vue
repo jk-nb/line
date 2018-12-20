@@ -15,7 +15,7 @@ export default class StartButton extends Vue {
   }
 
   get msg(): string {
-    return store.state.game.buttonMsg
+    return store.state.game.buttonMsg[store.state.game.state]
   }
 
 }

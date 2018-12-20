@@ -29,7 +29,7 @@ import Cell from './Cell.vue';
 })
 export default class Board extends Vue {
   get lineNum(): number {
-    return store.state.board.lineNum
+    return store.state.game.board.lineNum
   }
   get turn(): number {
     return store.state.game.turn

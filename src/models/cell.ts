@@ -1,17 +1,14 @@
 import { Enums } from "./../modules/enums/enum"
 
 export default class Cell{
-    private _state: number
+    state!: number
 
     constructor() {
-        this._state = Enums.CELL_ENUM.NONE
+        this.init()
     }
 
-    get state(): number{
-        return this._state
+    init(){
+        this.state = Enums.CELL_ENUM.NONE
     }
 
-    set state(state: number){
-        this._state = state
-    }
 }

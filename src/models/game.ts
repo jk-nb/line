@@ -1,42 +1,23 @@
 import { Enums } from "./../modules/enums/enum"
+import Board from "./board"
 
 export default class Game{
-    private _state: number
-    private _turn: number
-    private _buttonMsg = ["ゲーム開始", "終了", "もう１回する"]
+    state!: number
+    turn!: number
+    board!: Board
+    buttonMsg = ["ゲーム開始", "終了", "もう１回する"]
 
     constructor() {
-        this._state = Enums.GAME_STATE_ENUM.INIT
-        this._turn = 1
-    }
-
-    get state(): number {
-        return this._state
-    }
-
-    get turn(): number {
-        return this._turn
-    }
-
-    set state(state: number){
-        this._state = state
-    }
-
-    set turn(turn: number){
-        this._turn = turn
-    }
-
-    get buttonMsg(): string{        
-        return this._buttonMsg[this.state]
+        this.init()
     }
 
     public incrementTurn(): void{
-        this._turn++;
+        this.turn++;
     }
 
     public init(): void{
-        this._state = Enums.GAME_STATE_ENUM.INIT
-        this._turn = 1
+        this.state = Enums.GAME_STATE_ENUM.INIT
+        this.turn = 1
+        this.board = new Board()
     }
-
 }
