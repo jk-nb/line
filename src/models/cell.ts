@@ -1,22 +1,17 @@
-export enum CELL_ENUM {
-    NONE    = 0,
-    FIRST   = 1,
-    SECOND  = 2,
-}
+import { Enums } from "./../modules/enums/enum"
 
 export default class Cell{
-    public state: number
+    private _state: number
 
     constructor() {
-        this.state = CELL_ENUM.NONE
+        this._state = Enums.CELL_ENUM.NONE
     }
 
-    public getState(){
-        return this.state
+    get state(): number{
+        return this._state
     }
 
-    public setLineNum(state: number){
-        this.state = state
+    set state(state: number){
+        this._state = state
     }
-
 }

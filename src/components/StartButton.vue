@@ -8,16 +8,14 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import store from './../store'
 
-@Component({
-
-})
+@Component
 export default class StartButton extends Vue {
   public click(){
     store.commit('changeGameState',{})
   }
 
   get msg(): string {
-    return store.state.game.buttonMsg[store.state.game.state]
+    return store.state.game.buttonMsg
   }
 
 }

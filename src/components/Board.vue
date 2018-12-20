@@ -1,8 +1,6 @@
 <template>
   <div id="board">
-    <div>
-      ターン：{{turn}}
-    </div>
+    <div>ターン：{{turn}}</div>
     <div>
       <table>
         <tr v-for="i in lineNum" :key="i">
@@ -21,6 +19,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import store from './../store'
+import m_Cell from './../models/cell'
 import Cell from './Cell.vue';
 
 @Component({
@@ -35,6 +34,7 @@ export default class Board extends Vue {
   get turn(): number {
     return store.state.game.turn
   }
+
 }
 </script>
 

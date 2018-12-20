@@ -6,14 +6,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import GAME_STATE_ENUM from "./../models/game"
-
-import board from './Board.vue'
+import { Enums } from "./../modules/enums/enum"
 import store from './../store'
 
-@Component({
-
-})
+@Component
 export default class Cell extends Vue {
   @Prop() col!: number
   @Prop() row!: number
@@ -24,16 +20,16 @@ export default class Cell extends Vue {
 
   public putStone(i: number, j: number){
     switch(store.state.game.state){
-      case 0:
+      case Enums.GAME_STATE_ENUM.INIT:
         alert("ゲームが始まっていません")
         break
-      case 1:
+      case Enums.GAME_STATE_ENUM.PLAY:
         store.commit('changeCellStatus',{
           col: i,
           row: j
         })
         break
-      case 2:
+      case Enums.GAME_STATE_ENUM.FINISH:
           alert("ゲームが終了しています")
         break
     }

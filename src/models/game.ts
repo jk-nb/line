@@ -1,38 +1,42 @@
-enum GAME_STATE_ENUM{
-    INIT    = 0,
-    PLAY    = 1,
-    FINISH  = 2
-}
+import { Enums } from "./../modules/enums/enum"
 
 export default class Game{
-    public state: number
-    public turn: number
-    public buttonMsg = ["ゲーム開始", "終了", "もう１回する"]
+    private _state: number
+    private _turn: number
+    private _buttonMsg = ["ゲーム開始", "終了", "もう１回する"]
 
     constructor() {
-        this.state = GAME_STATE_ENUM.INIT
-        this.turn = 0
+        this._state = Enums.GAME_STATE_ENUM.INIT
+        this._turn = 1
     }
 
-    public getState(): number {
-        return this.state
+    get state(): number {
+        return this._state
     }
 
-    public getTurn(): number {
-        return this.turn
+    get turn(): number {
+        return this._turn
     }
 
-    public setState(state: number): void {
-        this.state = state
+    set state(state: number){
+        this._state = state
     }
 
-    public setTurn(turn: number): void {
-        this.turn = turn
+    set turn(turn: number){
+        this._turn = turn
+    }
+
+    get buttonMsg(): string{        
+        return this._buttonMsg[this.state]
+    }
+
+    public incrementTurn(): void{
+        this._turn++;
     }
 
     public init(): void{
-        this.setState(GAME_STATE_ENUM.INIT)
-        this.setTurn(1)
+        this._state = Enums.GAME_STATE_ENUM.INIT
+        this._turn = 1
     }
 
 }
